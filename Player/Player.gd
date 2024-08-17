@@ -42,4 +42,8 @@ func player_movement(delta):
 	move_and_slide()
 	Globals.player_pos = global_position
 
-
+func take_damage():
+	Globals.health -= 10
+	print(Globals.health)
+	if Globals.health<=0:
+		queue_free()

@@ -8,17 +8,35 @@
 script = ExtResource("1_vf8ps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.0
-offset_right = 150.0
-offset_bottom = 40.0
+offset_left = -851.5
+offset_right = 851.5
+offset_bottom = 330.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 32
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
 layout_mode = 2
 value = 100.0
+texture_under = ExtResource("1_ibqsx")
+texture_progress = ExtResource("2_g7yxf")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+scale = Vector2(4, 4)
+pivot_offset = Vector2(32, 0)
+theme_override_constants/margin_top = 5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer2"]
+layout_mode = 2
 texture_under = ExtResource("1_ibqsx")
 texture_progress = ExtResource("2_g7yxf")

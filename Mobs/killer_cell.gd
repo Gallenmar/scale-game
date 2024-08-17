@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var player_nearby :bool = false
 var can_shoot : bool = true
+var health = 40
 
 signal shoot(pos, direction)
 
@@ -25,3 +26,8 @@ func _on_attack_area_body_exited(body):
 
 func _on_shoot_cooldown_timeout():
 	can_shoot = true
+
+func take_damage():
+	health -= 10
+	if health<=0:
+		queue_free()

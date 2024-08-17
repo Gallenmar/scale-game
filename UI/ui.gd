@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var health_bar = $MarginContainer/TextureProgressBar
+@onready var health_bar = $MarginContainer2/TextureProgressBar
 
 func _ready():
 	Globals.connect("health_change", update_health_ui)
