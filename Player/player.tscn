@@ -25,3 +25,9 @@ position = Vector2(51, 0)
 [node name="Sprite2D" type="Sprite2D" parent="PivotPoint/ShootingPoint"]
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("2_32u6q")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

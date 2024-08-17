@@ -6,15 +6,22 @@ signal shoot(shooting_point_pos, directon)
 @export var acceleration = 3000
 @export var friction = 3000
 
+var can_shoot = true
+
 func _process(delta):
 	look_at(get_global_mouse_position())
 
 func _physics_process(delta):
 	player_movement(delta)
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and can_shoot:
+		can_shoot = false
+		$Timer.start()
 		var directon = (get_global_mouse_position() - position).normalized()
 		shoot.emit(%ShootingPoint.global_position, directon)
 
+func _on_timer_timeout():
+	can_shoot = true
+	
 var input = Vector2.ZERO
 func get_input():
 	input.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
@@ -33,3 +40,5 @@ func player_movement(delta):
 		velocity += (input * acceleration * delta)
 		velocity = velocity.limit_length(max_speed)
 	move_and_slide()
+
+
