@@ -16,15 +16,21 @@ shape = SubResource("CircleShape2D_4g4ag")
 scale = Vector2(0.068389, 0.068389)
 texture = ExtResource("2_32u6q")
 
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-760.356, 219.334)
+scale = Vector2(1.53049, 0.0934538)
+texture = ExtResource("2_32u6q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-818.845, -160.845)
+scale = Vector2(1.53049, 0.0934538)
+texture = ExtResource("2_32u6q")
+
 [node name="PivotPoint" type="Marker2D" parent="."]
 
 [node name="ShootingPoint" type="Marker2D" parent="PivotPoint"]
 unique_name_in_owner = true
 position = Vector2(51, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="PivotPoint/ShootingPoint"]
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("2_32u6q")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player = get_node("/root/World/Player")
+var health :int = 100
 
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -8,4 +9,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage():
-	queue_free()
+	health -= 25
+	if health<=0:
+		queue_free()

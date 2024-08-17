@@ -15,10 +15,15 @@ run/main_scene="res://World/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://UI/globals/globals.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [file_customization]
 
@@ -67,4 +72,4 @@ shoot={
 2d_physics/layer_2="enemies"
 2d_physics/layer_3="projectiles"
 2d_physics/layer_4="walls"
-2d_physics/layer_5="loot"
+2d_physics/layer_5="loot & zones"
