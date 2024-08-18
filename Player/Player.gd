@@ -5,7 +5,7 @@ signal dead()
 
 @export var max_speed = 900
 @export var acceleration = 3000
-@export var friction = 3000
+@export var friction = 6000
 
 var can_shoot = true
 var player_alive = true

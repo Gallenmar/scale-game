@@ -35,3 +35,10 @@ func create_bullet(pos, dir):
 
 func _on_player_dead():
 	$UI.game_over()
+
+func _process(delta):
+	if Input.is_action_pressed("pause"): # !todo this needs some work
+		if get_tree().paused:
+			get_tree().paused = false
+		else:
+			get_tree().paused = true
