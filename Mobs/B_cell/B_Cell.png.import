@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vy4mpsuy0vc2"
-path="res://.godot/imported/Bullet.png-b2cb04e7fb96992b7c77a3f5d30b8be7.ctex"
+uid="uid://t7b14bjkrubm"
+path="res://.godot/imported/B_Cell.png-cbd386cc417a39ae628525a397fe8cb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/objects/Bullet.png"
-dest_files=["res://.godot/imported/Bullet.png-b2cb04e7fb96992b7c77a3f5d30b8be7.ctex"]
+source_file="res://Mobs/B_cell/B_Cell.png"
+dest_files=["res://.godot/imported/B_Cell.png-cbd386cc417a39ae628525a397fe8cb0.ctex"]
 
 [params]
 

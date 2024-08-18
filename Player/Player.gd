@@ -1,23 +1,27 @@
 extends CharacterBody2D
 
 signal shoot(shooting_point_pos, directon)
+signal dead()
 
 @export var max_speed = 900
 @export var acceleration = 3000
 @export var friction = 3000
 
 var can_shoot = true
+var player_alive = true
 
 func _process(delta):
-	look_at(get_global_mouse_position())
+	if player_alive:
+		look_at(get_global_mouse_position())
 
 func _physics_process(delta):
-	player_movement(delta)
-	if Input.is_action_pressed("shoot") and can_shoot:
-		can_shoot = false
-		$Timer.start()
-		var directon = (get_global_mouse_position() - position).normalized()
-		shoot.emit(%ShootingPoint.global_position, directon)
+	if player_alive:
+		player_movement(delta)
+		if Input.is_action_pressed("shoot") and can_shoot:
+			can_shoot = false
+			$Timer.start()
+			var directon = (get_global_mouse_position() - position).normalized()
+			shoot.emit(%ShootingPoint.global_position, directon)
 
 func _on_timer_timeout():
 	can_shoot = true
@@ -44,6 +48,6 @@ func player_movement(delta):
 
 func take_damage():
 	Globals.health -= 10
-	print(Globals.health)
 	if Globals.health<=0:
-		queue_free()
+		dead.emit()
+		player_alive = false

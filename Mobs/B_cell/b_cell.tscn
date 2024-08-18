@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://6ywdi6nyrmng"]
+
+[ext_resource type="Script" path="res://Mobs/B_cell/b_cell.gd" id="1_gyg5x"]
+[ext_resource type="Texture2D" uid="uid://t7b14bjkrubm" path="res://Mobs/B_cell/B_Cell.png" id="2_7g14j"]
+[ext_resource type="Texture2D" uid="uid://bvg8uk8ej8hie" path="res://Player/Player Sprite.png" id="3_tj6rs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
+radius = 24.0208
+
+[node name="BCell" type="CharacterBody2D" groups=["Bcells"]]
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_gyg5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8kbj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.848752, 0.291295, 0.146197, 1)
+texture = ExtResource("2_7g14j")
+
+[node name="ShootCooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Shoot" type="Marker2D" parent="Pivot"]
+position = Vector2(32.75, 0)
+
+[node name="DebugMarker" type="Sprite2D" parent="Pivot/Shoot"]
+visible = false
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("3_tj6rs")
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

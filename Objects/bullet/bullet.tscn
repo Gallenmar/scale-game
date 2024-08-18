@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://cairhc1tjrjgq"]
 
-[ext_resource type="Texture2D" uid="uid://vy4mpsuy0vc2" path="res://Player/objects/Bullet.png" id="1_swvfx"]
-[ext_resource type="Script" path="res://Player/objects/bullet.gd" id="1_x4yg2"]
+[ext_resource type="Texture2D" uid="uid://vy4mpsuy0vc2" path="res://Objects/bullet/Bullet.png" id="1_a3xuk"]
+[ext_resource type="Script" path="res://Objects/bullet/bullet.gd" id="1_dbv8r"]
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 11
-script = ExtResource("1_x4yg2")
+script = ExtResource("1_dbv8r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8.13333, 0.133334)
 rotation = 1.5708
-texture = ExtResource("1_swvfx")
+texture = ExtResource("1_a3xuk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(8.13333, 0.133334)
