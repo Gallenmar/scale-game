@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://djjyi6f8ftjjs"]
 
-[ext_resource type="Script" path="res://Mobs/killer_cell.gd" id="1_flv3f"]
-[ext_resource type="Texture2D" uid="uid://bx70f6n7oi5ei" path="res://Mobs/Killer.png" id="1_xl1m2"]
-[ext_resource type="Texture2D" uid="uid://bvg8uk8ej8hie" path="res://Player/Player Sprite.png" id="3_ccwsq"]
+[ext_resource type="Script" path="res://Mobs/Killer/killer_cell.gd" id="1_f0l7e"]
+[ext_resource type="Texture2D" uid="uid://bx70f6n7oi5ei" path="res://Mobs/Killer/Killer.png" id="2_gjgbl"]
+[ext_resource type="Texture2D" uid="uid://bvg8uk8ej8hie" path="res://Player/Player Sprite.png" id="3_383dr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
 radius = 24.0208
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1772"]
-radius = 175.009
+radius = 325.06
 
 [node name="KillerCell" type="CharacterBody2D" groups=["Killers"]]
 scale = Vector2(4, 4)
 collision_layer = 2
-script = ExtResource("1_flv3f")
+script = ExtResource("1_f0l7e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xl1m2")
+texture = ExtResource("2_gjgbl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8kbj6")
@@ -35,7 +35,7 @@ position = Vector2(32.75, 0)
 [node name="DebugMarker" type="Sprite2D" parent="Pivot/Shoot"]
 visible = false
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("3_ccwsq")
+texture = ExtResource("3_383dr")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 

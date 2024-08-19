@@ -10,7 +10,7 @@ func _process(delta):
 	rotation += rotation_speed * delta
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	Globals.health += 30
 	queue_free()
 

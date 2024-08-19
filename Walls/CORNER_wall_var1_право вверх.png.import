@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx70f6n7oi5ei"
-path="res://.godot/imported/Killer.png-de15af5335e0f90543bba4d52bd02801.ctex"
+uid="uid://6u2im6cyb57y"
+path="res://.godot/imported/CORNER_wall_var1_право вверх.png-f7e036d2d4ce69403c459a2559a9c373.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mobs/Killer.png"
-dest_files=["res://.godot/imported/Killer.png-de15af5335e0f90543bba4d52bd02801.ctex"]
+source_file="res://Walls/CORNER_wall_var1_право вверх.png"
+dest_files=["res://.godot/imported/CORNER_wall_var1_право вверх.png-f7e036d2d4ce69403c459a2559a9c373.ctex"]
 
 [params]
 

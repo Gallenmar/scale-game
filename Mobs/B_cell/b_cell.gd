@@ -6,7 +6,7 @@ var health = 40
 
 signal shoot(pos, direction)
 
-func _process(delta):
+func _process(_delta):
 	if can_shoot:
 		can_shoot = false
 		$ShootCooldown.start()

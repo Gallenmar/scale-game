@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1vb6leyds13j"
-path="res://.godot/imported/Mob.png-a751de05e50bb6d33a09a157a9f7d6bd.ctex"
+uid="uid://jlk4k0kd5r8r"
+path="res://.godot/imported/CORNER_wall_var1_право низ.png-ab47542d6f3333dc5e914c7cd45959a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mobs/Mob.png"
-dest_files=["res://.godot/imported/Mob.png-a751de05e50bb6d33a09a157a9f7d6bd.ctex"]
+source_file="res://Walls/CORNER_wall_var1_право низ.png"
+dest_files=["res://.godot/imported/CORNER_wall_var1_право низ.png-ab47542d6f3333dc5e914c7cd45959a7.ctex"]
 
 [params]
 

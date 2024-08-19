@@ -3,14 +3,14 @@ extends CharacterBody2D
 signal shoot(shooting_point_pos, directon)
 signal dead()
 
-@export var max_speed = 900
-@export var acceleration = 3000
-@export var friction = 6000
+@export var max_speed = 1000
+@export var acceleration = 6000
+@export var friction = 10000
 
 var can_shoot = true
 var player_alive = true
 
-func _process(delta):
+func _process(_delta):
 	if player_alive:
 		look_at(get_global_mouse_position())
 
@@ -51,3 +51,7 @@ func take_damage():
 	if Globals.health<=0:
 		dead.emit()
 		player_alive = false
+		
+func insta_kill():
+	dead.emit()
+	player_alive = false
