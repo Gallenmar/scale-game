@@ -102,11 +102,17 @@ func take_damage():
 		Globals.health -= 10
 		if Globals.health<=0:
 			dead.emit()
+			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
+			$InVuln.scale = Vector2(scale_0,scale_0)
+			velocity= Vector2.ZERO
 		
 func insta_kill():
 	if Globals.is_vulnurable:
 		Globals.health -= 100
 		dead.emit()
+		$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
+		$InVuln.scale = Vector2(scale_0,scale_0)
+		velocity= Vector2.ZERO
 
 func dash_start(pos):
 	dash_pos = pos
