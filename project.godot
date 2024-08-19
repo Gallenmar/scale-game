@@ -81,3 +81,4 @@ dash={
 2d_physics/layer_3="projectiles"
 2d_physics/layer_4="walls"
 2d_physics/layer_5="loot & zones"
+2d_physics/layer_8="doors"

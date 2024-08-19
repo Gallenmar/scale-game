@@ -24,10 +24,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_m5imv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jq1ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_emqdg")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"swim",
+"speed": 15.0
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -43,8 +49,7 @@ shape = SubResource("CircleShape2D_r1h4x")
 position = Vector2(-35, 2)
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_k5cbl")
-autoplay = "default"
-frame_progress = 0.429147
+animation = &"swim"
 
 [node name="PivotPoint" type="Marker2D" parent="."]
 

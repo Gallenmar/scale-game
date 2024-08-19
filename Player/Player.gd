@@ -19,6 +19,10 @@ func _ready():
 func _process(_delta):
 	if player_alive:
 		look_at(get_global_mouse_position())
+	if velocity.length() > 0:
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
 
 func _physics_process(delta):
 	if player_alive:
