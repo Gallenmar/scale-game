@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 signal dead(pos:Vector2)
-signal crush()
+signal crush(pos)
 
 @onready var player = get_node("/root/World/Player")
 @export var speed = 300
+
 var health :int = 30
 var can_damage = true
 var player_near = true
@@ -64,5 +65,7 @@ func _on_hover_area_mouse_exited():
 
 
 func _on_hover_area_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("right click") and $Border.visible:
-		crush.emit()
+	if Input.is_action_just_pressed("dash") and $Border.visible:
+		crush.emit(global_position)
+		queue_free()
+		dead.emit(global_position)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://djjyi6f8ftjjs"]
+[gd_scene load_steps=5 format=3 uid="uid://djjyi6f8ftjjs"]
 
 [ext_resource type="Script" path="res://Mobs/Killer/killer_cell.gd" id="1_f0l7e"]
 [ext_resource type="Texture2D" uid="uid://bx70f6n7oi5ei" path="res://Mobs/Killer/Killer.png" id="2_gjgbl"]
-[ext_resource type="Texture2D" uid="uid://bvg8uk8ej8hie" path="res://Player/Player Sprite.png" id="3_383dr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
 radius = 24.0208
@@ -28,11 +27,6 @@ shape = SubResource("CircleShape2D_f1772")
 
 [node name="Shoot" type="Marker2D" parent="Pivot"]
 position = Vector2(32.75, 0)
-
-[node name="DebugMarker" type="Sprite2D" parent="Pivot/Shoot"]
-visible = false
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("3_383dr")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 

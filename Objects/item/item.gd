@@ -12,6 +12,7 @@ func _process(delta):
 
 func _on_body_entered(_body):
 	Globals.health += 30
+	Globals.is_vulnurable = false
 	queue_free()
 
 

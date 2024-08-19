@@ -65,10 +65,5 @@ position = Vector2(-34, 2)
 scale = Vector2(0.07, 0.07)
 texture = ExtResource("6_gmfd0")
 
-[node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]
-[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

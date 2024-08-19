@@ -14,29 +14,27 @@ func _ready():
 		i.connect('shoot', _on_bcell_shoot)
 
 func _on_bcell_shoot(pos, dir):
-	create_bullet(pos, dir)
+	create_bullet(pos, dir, false)
 
 func _on_killer_shoot(pos, dir):
-	create_bullet(pos, dir)
+	create_bullet(pos, dir, false)
 
 func _on_mob_dead(pos):
-	if randi() % 3 == 0: #chanse 33%
+	if randi() % 2 == 0: #chanse 50%
 		var item = ITEM.instantiate() as Area2D
 		item.position = pos
 		$Items.call_deferred("add_child", item)
 
-func _on_mob_crush():
-	pass
-	# kill enemy
-	# Get drop
-	# Quick dash to the place of enemy
-	# camera transition
+func _on_mob_crush(pos):
+	Globals.is_vulnurable = false
+	$Player.dash_start(pos)
 
 func _on_player_shoot(shooting_point_pos, directon):
-	create_bullet(shooting_point_pos, directon)
+	create_bullet(shooting_point_pos, directon, true)
 
-func create_bullet(pos, dir):
+func create_bullet(pos, dir, is_player):
 	var bullet = BULLET.instantiate() as Area2D
+	bullet.player = is_player
 	bullet.position = pos
 	bullet.rotation = dir.angle()
 	$Projectiles.call_deferred("add_child", bullet)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cairhc1tjrjgq"]
 
-[ext_resource type="Texture2D" uid="uid://vy4mpsuy0vc2" path="res://Objects/bullet/Bullet.png" id="1_a3xuk"]
 [ext_resource type="Script" path="res://Objects/bullet/bullet.gd" id="1_dbv8r"]
+[ext_resource type="Texture2D" uid="uid://bxxyb0eubovvt" path="res://Objects/bullet/antibody.png" id="2_s2xep"]
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(2, 2)
@@ -10,13 +10,13 @@ collision_mask = 11
 script = ExtResource("1_dbv8r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8.13333, 0.133334)
-rotation = 1.5708
-texture = ExtResource("1_a3xuk")
+position = Vector2(10, 3.73035e-14)
+rotation = -1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_s2xep")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(8.13333, 0.133334)
-rotation = 1.5708
-polygon = PackedVector2Array(-8, 8, 0, -8, 8, 8)
+position = Vector2(10, 0)
+polygon = PackedVector2Array(-6.5, -12, -10, -9, -10, 9.5, -7, 12, -5, 12, 3, 3.5, 10, 3.5, 10.5, 2.5, 10.5, -2.5, 9.5, -3.5, 3.5, -3.5, -5, -12)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
