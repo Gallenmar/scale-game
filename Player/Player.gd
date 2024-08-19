@@ -8,8 +8,18 @@ signal dead()
 @export var friction = 10000
 @export var dash_scatter_radius = 300
 
+@export var max_speed_80 = 600
+@export var max_speed_60 = 800
+@export var max_speed_40 = 1000
+@export var max_speed_20 = 1200
+@export var max_speed_0 = 1400
+@export var scale_80 = 0.13
+@export var scale_60 = 0.1
+@export var scale_40 = 0.07
+@export var scale_20 = 0.05
+@export var scale_0 = 0.03
+
 var can_shoot = true
-var player_alive = true
 var dash_pos = null
 var dash_velocity = 0
 
@@ -18,11 +28,31 @@ func _ready():
 	$InVuln.hide()
 
 func _process(_delta):
-	if player_alive:
+	if Globals.health > 0:
+		if Globals.health > 80:
+			max_speed = max_speed_80
+			$AnimatedSprite2D.scale = Vector2(scale_80,scale_80)
+			$InVuln.scale = Vector2(scale_80,scale_80)
+		elif Globals.health > 60:
+			max_speed = max_speed_60
+			$AnimatedSprite2D.scale = Vector2(scale_60,scale_60)
+			$InVuln.scale = Vector2(scale_60,scale_60)
+		elif Globals.health > 40:
+			max_speed = max_speed_40
+			$AnimatedSprite2D.scale = Vector2(scale_40,scale_40)
+			$InVuln.scale = Vector2(scale_40,scale_40)
+		elif Globals.health > 20:
+			max_speed = max_speed_20
+			$AnimatedSprite2D.scale = Vector2(scale_20,scale_20)
+			$InVuln.scale = Vector2(scale_20,scale_20)
+		elif Globals.health > 0:
+			max_speed = max_speed_0
+			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
+			$InVuln.scale = Vector2(scale_0,scale_0)
 		look_at(get_global_mouse_position())
 
 func _physics_process(delta):
-	if player_alive:
+	if Globals.health > 0:
 		player_movement(delta)
 		if Input.is_action_pressed("shoot") and can_shoot:
 			can_shoot = false
@@ -68,13 +98,11 @@ func take_damage():
 		Globals.health -= 10
 		if Globals.health<=0:
 			dead.emit()
-			player_alive = false
 		
 func insta_kill():
 	if Globals.is_vulnurable:
 		Globals.health -= 100
 		dead.emit()
-		player_alive = false
 
 func dash_start(pos):
 	dash_pos = pos
