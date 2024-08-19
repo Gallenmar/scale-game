@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2voi5rm70gfd"
-path="res://.godot/imported/RIGHT_wall_var1.png-599f7ba5c6274773a2906fd135d1e811.ctex"
+uid="uid://iayiq056v4rr"
+path="res://.godot/imported/Green_Bac_4.png-0683c99b0743f50762e683d89db32882.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Walls/RIGHT_wall_var1.png"
-dest_files=["res://.godot/imported/RIGHT_wall_var1.png-599f7ba5c6274773a2906fd135d1e811.ctex"]
+source_file="res://Player/PlayerSprite/Green_Bac_4.png"
+dest_files=["res://.godot/imported/Green_Bac_4.png-0683c99b0743f50762e683d89db32882.ctex"]
 
 [params]
 

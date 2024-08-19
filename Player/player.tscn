@@ -1,30 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6tie7mf8qj34"]
+[gd_scene load_steps=8 format=3 uid="uid://c6tie7mf8qj34"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_gufou"]
-[ext_resource type="Texture2D" uid="uid://bvg8uk8ej8hie" path="res://Player/Player Sprite.png" id="2_32u6q"]
+[ext_resource type="Texture2D" uid="uid://u4riwgoebwpl" path="res://Player/PlayerSprite/Green_Bac_1.png" id="2_7ubha"]
+[ext_resource type="Texture2D" uid="uid://bftdascyp1mu4" path="res://Player/PlayerSprite/Green_Bac_2.png" id="3_emqdg"]
+[ext_resource type="Texture2D" uid="uid://cin4yuwmjp72j" path="res://Player/PlayerSprite/Green_Bac_3.png" id="4_jq1ja"]
+[ext_resource type="Texture2D" uid="uid://iayiq056v4rr" path="res://Player/PlayerSprite/Green_Bac_4.png" id="5_m5imv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4g4ag"]
-radius = 31.0483
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1h4x"]
+radius = 8.80227
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5cbl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ubha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_emqdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jq1ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m5imv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 9
 script = ExtResource("1_gufou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_4g4ag")
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_r1h4x")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.068389, 0.068389)
-texture = ExtResource("2_32u6q")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-760.356, 219.334)
-scale = Vector2(1.53049, 0.0934538)
-texture = ExtResource("2_32u6q")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-818.845, -160.845)
-scale = Vector2(1.53049, 0.0934538)
-texture = ExtResource("2_32u6q")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, 2)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_k5cbl")
+autoplay = "default"
+frame_progress = 0.429147
 
 [node name="PivotPoint" type="Marker2D" parent="."]
 

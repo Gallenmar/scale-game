@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3a0gcfhridrv"
-path="res://.godot/imported/Dungeon_Tileset.png-ac86d593366c7c4fe5568226a7cf2035.ctex"
+uid="uid://bftdascyp1mu4"
+path="res://.godot/imported/Green_Bac_2.png-9d8915173bc902ac71c86b8b62c8b9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Dungeon_Tileset.png"
-dest_files=["res://.godot/imported/Dungeon_Tileset.png-ac86d593366c7c4fe5568226a7cf2035.ctex"]
+source_file="res://Player/PlayerSprite/Green_Bac_2.png"
+dest_files=["res://.godot/imported/Green_Bac_2.png-9d8915173bc902ac71c86b8b62c8b9a3.ctex"]
 
 [params]
 
