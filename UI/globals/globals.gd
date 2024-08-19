@@ -11,7 +11,7 @@ var is_vulnurable :bool = true:
 			vulnurability_change.emit()
 		is_vulnurable=value
 
-var health = 100:
+var health = 50:
 	get:
 		return health
 	set(value):

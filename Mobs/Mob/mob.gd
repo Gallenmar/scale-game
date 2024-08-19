@@ -43,7 +43,8 @@ func take_damage():
 		dead.emit(global_position)
 		queue_free()
 
-
+func jump_away(dir):
+	global_position += dir * 100
 
 
 func _on_area_2d_mouse_entered():
