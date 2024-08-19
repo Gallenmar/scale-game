@@ -15,9 +15,6 @@ scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_f0l7e")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gjgbl")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8kbj6")
 
@@ -38,6 +35,9 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_383dr")
 
 [node name="ShootCooldown" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gjgbl")
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
