@@ -50,6 +50,10 @@ func _process(_delta):
 			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
 			$InVuln.scale = Vector2(scale_0,scale_0)
 		look_at(get_global_mouse_position())
+	if velocity.length() > 0:
+		$AnimatedSprite2D.play()
+	else:
+		$AnimatedSprite2D.stop()
 
 func _physics_process(delta):
 	if Globals.health > 0:
