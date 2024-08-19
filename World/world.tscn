@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://du8k64qf2o8f"]
+[gd_scene load_steps=13 format=3 uid="uid://du8k64qf2o8f"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_jahis"]
 [ext_resource type="Texture2D" uid="uid://iyvr8hg2uris" path="res://TileMap/Tile Map 1.png" id="2_v2mdb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6ywdi6nyrmng" path="res://Mobs/B_cell/b_cell.tscn" id="5_2geht"]
 [ext_resource type="PackedScene" uid="uid://elayg8svbarm" path="res://UI/ui.tscn" id="5_3s546"]
 [ext_resource type="PackedScene" uid="uid://hfb7b7r05eia" path="res://Mobs/Mob/mob.tscn" id="6_5autu"]
+[ext_resource type="PackedScene" uid="uid://qj1ak7x2pw6u" path="res://Mobs/Boss/boss.tscn" id="7_wdnno"]
 [ext_resource type="PackedScene" uid="uid://ojrr2k26oixr" path="res://Mobs/White_Cell/white_cell.tscn" id="8_ahxnj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ie7vk"]
@@ -251,6 +252,9 @@ position = Vector2(251, 364)
 
 [node name="Mob6" parent="Enemies" instance=ExtResource("6_5autu")]
 position = Vector2(786, 278)
+
+[node name="Boss" parent="Enemies" instance=ExtResource("7_wdnno")]
+position = Vector2(2935, 1670)
 
 [node name="Player" parent="." instance=ExtResource("3_j6bc0")]
 position = Vector2(965, 542)

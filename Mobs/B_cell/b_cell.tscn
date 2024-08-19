@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
 radius = 24.0208
 
-[node name="BCell" type="CharacterBody2D" groups=["Bcells"]]
+[node name="BCell" type="CharacterBody2D" groups=["Bcells", "Enemies"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_gyg5x")

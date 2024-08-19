@@ -17,6 +17,11 @@ func _ready():
 		i.connect('crush', _on_mob_crush)
 	for i in get_tree().get_nodes_in_group("Bcells"):
 		i.connect('shoot', _on_bcell_shoot)
+	for i in get_tree().get_nodes_in_group("Boss"):
+		i.connect('shoot', _on_boss_shoot)
+
+func _on_boss_shoot(pos, dir):
+	create_boss_bullet(pos, dir)
 
 func _on_bcell_shoot(pos, dir):
 	create_bullet(pos, dir)
@@ -41,6 +46,12 @@ func _on_mob_crush(pos):
 
 func _on_player_shoot(shooting_point_pos, directon):
 	create_toxin(shooting_point_pos, directon)
+
+func create_boss_bullet(pos, dir):
+	var bullet = BULLET.instantiate() as Area2D
+	bullet.position = pos
+	bullet.rotation = dir.angle()
+	$Projectiles.call_deferred("add_child", bullet)
 
 func create_bullet(pos, dir):
 	var bullet = BULLET.instantiate() as Area2D
