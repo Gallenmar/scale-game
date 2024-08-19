@@ -2,6 +2,7 @@ extends Node2D
 
 const BULLET = preload("res://Objects/bullet/bullet.tscn")
 const TOXIN = preload("res://Objects/toxin/toxin.tscn")
+const WASTE = preload("res://Objects/waste/waste.tscn")
 const ITEM = preload("res://Objects/item/item.tscn")
 
 @export var item_def_chance = 30
@@ -47,6 +48,9 @@ func _on_mob_crush(pos):
 func _on_player_shoot(shooting_point_pos, directon):
 	create_toxin(shooting_point_pos, directon)
 
+func _on_player_lash(shooting_point_pos, directon):
+	create_waste(shooting_point_pos, directon)
+
 func create_boss_bullet(pos, dir):
 	var bullet = BULLET.instantiate() as Area2D
 	bullet.position = pos
@@ -65,6 +69,14 @@ func create_toxin(pos, dir):
 	toxin.rotation = dir.angle()
 	$Projectiles.call_deferred("add_child", toxin)
 
+func create_waste(pos, dir):
+	var waste = WASTE.instantiate() as RigidBody2D
+	waste.position = pos
+	waste.linear_velocity = dir * 100
+	$Projectiles.call_deferred("add_child", waste)
+	var tween = get_tree().create_tween()
+	tween.tween_property(waste, "linear_velocity", Vector2.ZERO,2)
+
 func _on_player_dead():
 	$UI.game_over()
 
@@ -75,3 +87,5 @@ func _process(_delta):
 			get_tree().paused = false
 		else:
 			get_tree().paused = true
+
+

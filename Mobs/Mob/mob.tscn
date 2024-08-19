@@ -8,10 +8,10 @@
 radius = 33.7343
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3wu8"]
-size = Vector2(240, 240)
+size = Vector2(300, 300)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltv7g"]
-radius = 382.033
+radius = 549.008
 
 [node name="Mob" type="CharacterBody2D" groups=["Enemies", "Mobs"]]
 collision_layer = 2

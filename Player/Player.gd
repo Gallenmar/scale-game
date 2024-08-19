@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal shoot(shooting_point_pos, directon)
 signal dead()
+signal lash(shooting_point_pos, directon)
 
 @export var max_speed = 1000
 @export var acceleration = 6000
@@ -63,6 +64,20 @@ func _physics_process(delta):
 			$ShootingTimer.start()
 			var directon = (get_global_mouse_position() - position).normalized()
 			shoot.emit(%ShootingPoint.global_position, directon)
+		if Input.is_action_just_pressed("lash"):
+			Globals.health -= 10
+			
+			var direction = ($PivotPoint/Lash1.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash1.global_position, direction)
+			direction = ($PivotPoint/Lash2.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash2.global_position, direction)
+			direction = ($PivotPoint/Lash3.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash3.global_position, direction)
+			direction = ($PivotPoint/Lash4.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash4.global_position, direction)
+			
+			var new_pos = global_position + (%ShootingPoint.global_position - global_position) * 4
+			dash_start(new_pos)
 
 func _on_timer_timeout():
 	can_shoot = true
@@ -114,10 +129,10 @@ func insta_kill():
 		$InVuln.scale = Vector2(scale_0,scale_0)
 		velocity= Vector2.ZERO
 
-func dash_start(pos):
-	dash_pos = pos
+func dash_start(target_pos):
+	dash_pos = target_pos
 	$DashTimer.start()
-	var dir = (pos - global_position)
+	var dir = (target_pos - global_position)
 	dash_velocity = dir / $DashTimer.wait_time
 	set_collision_layer_value(1,false)
 
