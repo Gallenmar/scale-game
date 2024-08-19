@@ -9,7 +9,7 @@ radius = 149.03
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4sht"]
 radius = 976.074
 
-[node name="WhiteCell" type="CharacterBody2D"]
+[node name="WhiteCell" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
 script = ExtResource("1_sfxua")
 

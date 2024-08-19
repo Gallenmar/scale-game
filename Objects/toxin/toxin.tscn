@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6loqk1pfa08r"]
+
+[ext_resource type="Script" path="res://Objects/toxin/toxin.gd" id="1_a6in8"]
+[ext_resource type="Texture2D" uid="uid://bmgc4rhg7u7mk" path="res://Objects/toxin/spot.png" id="2_nhcgn"]
+
+[node name="Toxin" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_a6in8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12, -0.5)
+rotation = 1.5708
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_nhcgn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(12, 0)
+polygon = PackedVector2Array(12.5, -1, 8, -7.5, 1.5, -10.5, -4, -13, -11, -4, -12.5, 3, -9.5, 10, -2, 10.5, 5.5, 11, 6.5, 9)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

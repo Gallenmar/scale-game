@@ -9,7 +9,7 @@ radius = 24.0208
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1772"]
 radius = 325.06
 
-[node name="KillerCell" type="CharacterBody2D" groups=["Killers"]]
+[node name="KillerCell" type="CharacterBody2D" groups=["Enemies", "Killers"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_f0l7e")

@@ -4,6 +4,7 @@ extends Area2D
 @export var RANGE = 20000 # comment this when the walls are guarantied
 
 var traveled_distance = 0
+var player : bool= false
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -15,6 +16,6 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body.has_method("take_damage") and body.name == "Player":
-		queue_free()
+	queue_free()
+	if body.has_method("take_damage"):
 		body.take_damage()

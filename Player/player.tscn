@@ -31,20 +31,13 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 9
+collision_mask = 11
 script = ExtResource("1_gufou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_r1h4x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-35, 2)
-scale = Vector2(0.07, 0.07)
-sprite_frames = SubResource("SpriteFrames_k5cbl")
-autoplay = "default"
-frame_progress = 0.429147
 
 [node name="PivotPoint" type="Marker2D" parent="."]
 
@@ -59,6 +52,13 @@ one_shot = true
 [node name="InvulnTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-35, 2)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_k5cbl")
+autoplay = "default"
+frame_progress = 0.429147
+
 [node name="InVuln" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-34, 2)
@@ -66,7 +66,7 @@ scale = Vector2(0.07, 0.07)
 texture = ExtResource("6_gmfd0")
 
 [node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_timer_timeout"]

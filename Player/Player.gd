@@ -6,6 +6,7 @@ signal dead()
 @export var max_speed = 1000
 @export var acceleration = 6000
 @export var friction = 10000
+@export var dash_scatter_radius = 300
 
 var can_shoot = true
 var player_alive = true
@@ -51,9 +52,6 @@ func player_movement(delta):
 			velocity = velocity.limit_length(max_speed)
 	else:
 		velocity = dash_velocity * delta * 60
-		print("d", delta)
-		print("v", velocity)
-		print("")
 	move_and_slide()
 	Globals.player_pos = global_position
 
@@ -79,34 +77,22 @@ func insta_kill():
 		player_alive = false
 
 func dash_start(pos):
-	print("current pos ", global_position)
-	print("target pos ", pos)
 	dash_pos = pos
 	$DashTimer.start()
 	var dir = (pos - global_position)
-	print("dir", dir)
 	dash_velocity = dir / $DashTimer.wait_time
-	print("dv", dash_velocity)
 	set_collision_layer_value(1,false)
 
 func _on_dash_timer_timeout():
-	print("res pos", global_position)
 	dash_pos = null
 	Globals.is_vulnurable = false
 	velocity = velocity.limit_length(max_speed)
 	set_collision_layer_value(1,true)
-	
-#func handle_dash(delta, pos):
-	#print("target pos", pos)
-	#print("pos before: ", global_position)	
-	#var dir = (pos - global_position)
-	#print("dir", dir)
-	#print("distance",(pos - global_position))
-	#velocity = dir
-	#print("v", velocity)
-	#move_and_slide()
-	#print("pos after: ", global_position)
-	#print("")
-#
+	var enemies = get_tree().get_nodes_in_group("Enemies")
+	for enemy in enemies:
+		var in_range = enemy.global_position.distance_to(global_position) < dash_scatter_radius
+		if in_range:
+			var dir = (enemy.global_position - global_position).normalized()
+			enemy.jump_away(dir)
 
 
