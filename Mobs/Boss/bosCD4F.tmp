@@ -19,7 +19,7 @@ modulate = Color(0.848752, 0.291295, 0.146197, 1)
 texture = ExtResource("2_beaev")
 
 [node name="ShootCooldown" type="Timer" parent="."]
-wait_time = 0.127
+wait_time = 0.004
 one_shot = true
 
 [node name="Pivot" type="Marker2D" parent="."]
@@ -28,18 +28,7 @@ one_shot = true
 position = Vector2(32.75, 0)
 
 [node name="OneAttack" type="Timer" parent="."]
-wait_time = 2.097
-one_shot = true
-
-[node name="OneAttack2" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="OneAttack3" type="Timer" parent="."]
-wait_time = 2.612
 one_shot = true
 
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="timeout" from="OneAttack" to="." method="_on_one_attack_timeout"]
-[connection signal="timeout" from="OneAttack2" to="." method="_on_one_attack2_timeout"]
-[connection signal="timeout" from="OneAttack3" to="." method="_on_one_attack3_timeout"]

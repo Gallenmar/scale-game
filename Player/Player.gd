@@ -146,5 +146,3 @@ func _on_dash_timer_timeout():
 		if in_range:
 			var dir = (enemy.global_position - global_position).normalized()
 			enemy.jump_away(dir)
-
-
