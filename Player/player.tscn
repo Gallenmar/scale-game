@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5i0xglys5x0l" path="res://Player/InVuln.png" id="6_gmfd0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1h4x"]
-radius = 7.86384
+radius = 560.066
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k5cbl"]
 animations = [{
@@ -37,7 +37,7 @@ script = ExtResource("1_gufou")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, -1)
 rotation = 1.5708
-scale = Vector2(5, 5)
+scale = Vector2(0.07, 0.07)
 shape = SubResource("CircleShape2D_r1h4x")
 
 [node name="PivotPoint" type="Marker2D" parent="."]

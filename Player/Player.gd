@@ -31,25 +31,15 @@ func _ready():
 func _process(_delta):
 	if Globals.health > 0:
 		if Globals.health > 80:
-			max_speed = max_speed_80
-			$AnimatedSprite2D.scale = Vector2(scale_80,scale_80)
-			$InVuln.scale = Vector2(scale_80,scale_80)
+			scale_player(scale_80, max_speed_80)
 		elif Globals.health > 60:
-			max_speed = max_speed_60
-			$AnimatedSprite2D.scale = Vector2(scale_60,scale_60)
-			$InVuln.scale = Vector2(scale_60,scale_60)
+			scale_player(scale_60, max_speed_60)
 		elif Globals.health > 40:
-			max_speed = max_speed_40
-			$AnimatedSprite2D.scale = Vector2(scale_40,scale_40)
-			$InVuln.scale = Vector2(scale_40,scale_40)
+			scale_player(scale_40, max_speed_40)
 		elif Globals.health > 20:
-			max_speed = max_speed_20
-			$AnimatedSprite2D.scale = Vector2(scale_20,scale_20)
-			$InVuln.scale = Vector2(scale_20,scale_20)
+			scale_player(scale_20, max_speed_20)
 		elif Globals.health > 0:
-			max_speed = max_speed_0
-			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
-			$InVuln.scale = Vector2(scale_0,scale_0)
+			scale_player(scale_0, max_speed_0)
 		look_at(get_global_mouse_position())
 	else:
 		handle_death()
@@ -57,6 +47,14 @@ func _process(_delta):
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
+
+func scale_player(new_scale, new_speed):
+	max_speed = new_speed
+	$AnimatedSprite2D.scale = Vector2(new_scale,new_scale)
+	$InVuln.scale = Vector2(new_scale,new_scale)
+	$CollisionShape2D.scale = Vector2(new_scale,new_scale)
+	$CollisionShape2D.position = Vector2(36*10 * new_scale *1.4,0)
+	print($CollisionShape2D.position)
 
 func _physics_process(delta):
 	if Globals.health > 0:
