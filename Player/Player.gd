@@ -54,7 +54,6 @@ func scale_player(new_scale, new_speed):
 	$InVuln.scale = Vector2(new_scale,new_scale)
 	$CollisionShape2D.scale = Vector2(new_scale,new_scale)
 	$CollisionShape2D.position = Vector2(36*10 * new_scale *1.4,0)
-	print($CollisionShape2D.position)
 
 func _physics_process(delta):
 	if Globals.health > 0:
