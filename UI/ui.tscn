@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://elayg8svbarm"]
+[gd_scene load_steps=7 format=3 uid="uid://elayg8svbarm"]
 
 [ext_resource type="Texture2D" uid="uid://dvipar4k2u3bm" path="res://UI/bg.png" id="1_ibqsx"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_vf8ps"]
 [ext_resource type="Texture2D" uid="uid://cyy4awfetnd5h" path="res://UI/progress.png" id="2_g7yxf"]
+[ext_resource type="Texture2D" uid="uid://7pck0k46a1wf" path="res://UI/border разделенный1.png" id="3_05tlb"]
 [ext_resource type="FontFile" uid="uid://cpejjwtgt5xa8" path="res://Objects/toxin/OptimusPrinceps.ttf" id="4_cybi7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vclah"]
@@ -27,6 +28,7 @@ theme_override_constants/margin_top = 5
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer2"]
 layout_mode = 2
 texture_under = ExtResource("1_ibqsx")
+texture_over = ExtResource("3_05tlb")
 texture_progress = ExtResource("2_g7yxf")
 
 [node name="GameOverFade" type="ColorRect" parent="."]
@@ -34,6 +36,8 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.756863)
@@ -57,3 +61,13 @@ text = "YOU  DIED"
 label_settings = SubResource("LabelSettings_vclah")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 889.0
+offset_top = 734.0
+offset_right = 1049.0
+offset_bottom = 807.0
+text = "Try again"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

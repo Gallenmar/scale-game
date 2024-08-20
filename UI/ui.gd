@@ -14,3 +14,13 @@ func update_health_ui():
 func game_over():
 	$GameOverFade.show()
 	$GameOverLabel.show()
+	$Button.show()
+
+
+func _on_button_pressed():
+	get_tree().reload_current_scene()
+	Globals.health = 50
+	$GameOverFade.hide()
+	$GameOverLabel.hide()
+	$Button.hide()
+
