@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rn250vsk8bfb"
-path="res://.godot/imported/White.png-7810061d960110a78bfa351b7719841c.ctex"
+uid="uid://di8q7k8xhdjhb"
+path="res://.godot/imported/киллер.png-229f069b6cac25421e3d974d66c0f9b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mobs/White_Cell/White.png"
-dest_files=["res://.godot/imported/White.png-7810061d960110a78bfa351b7719841c.ctex"]
+source_file="res://Mobs/White_Cell/киллер.png"
+dest_files=["res://.godot/imported/киллер.png-229f069b6cac25421e3d974d66c0f9b8.ctex"]
 
 [params]
 

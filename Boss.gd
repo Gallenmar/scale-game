@@ -3,9 +3,14 @@ extends CharacterBody2D
 
 var player_nearby :bool = false
 var can_shoot : bool = true
-var health = 200
+var health = 400
+var timer = 1
 
 signal shoot(pos, direction)
+
+func _ready():
+	$Sprite2D/LowHealth.hide()
+	$Sprite2D/Border.hide()
 
 func _process(_delta):
 	if health >150:
@@ -98,6 +103,8 @@ func _on_shoot_cooldown_timeout():
 
 func take_damage():
 	health -= 10
+	if health <=10:
+		$"Sprite2D/LowHealth/Low Health Flickering".start()
 	if health<=0:
 		queue_free()
 
@@ -108,3 +115,13 @@ func _on_one_attack2_timeout():
 	can_shoot = true
 func _on_one_attack3_timeout():
 	can_shoot = true
+
+
+
+func _on_low_health_flickering_timeout():
+	if timer == 1:
+		$Sprite2D/LowHealth.show()
+		timer = 2
+	else:
+		$Sprite2D/LowHealth.hide()
+		timer = 1

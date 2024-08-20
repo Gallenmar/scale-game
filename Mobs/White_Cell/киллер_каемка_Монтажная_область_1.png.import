@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1vb6leyds13j"
-path="res://.godot/imported/Mob.png-34128acb2fbc0e5ba4acc0039c4523c3.ctex"
+uid="uid://dmdgcjqx1nsuk"
+path="res://.godot/imported/киллер_каемка_Монтажная_область_1.png-7fdcde04f0d04c3b56af16246dbf3af1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mobs/Mob/Mob.png"
-dest_files=["res://.godot/imported/Mob.png-34128acb2fbc0e5ba4acc0039c4523c3.ctex"]
+source_file="res://Mobs/White_Cell/киллер_каемка_Монтажная_область_1.png"
+dest_files=["res://.godot/imported/киллер_каемка_Монтажная_область_1.png-7fdcde04f0d04c3b56af16246dbf3af1.ctex"]
 
 [params]
 
