@@ -13,7 +13,7 @@ radius = 976.074
 collision_layer = 2
 script = ExtResource("1_sfxua")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["WhiteCells"]]
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_puboh")
 
