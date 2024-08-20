@@ -8,10 +8,17 @@ const ITEM = preload("res://Objects/item/item.tscn")
 
 @export var item_def_chance = 30
 @export var item_dash_chance = 70
+
+#@onready var music = $AudioStreamPlayer2D
+var bg_music := AudioStreamPlayer.new()
+
 var item_chance = item_def_chance
 
 func _ready():
-	
+	#music.play(0.0)
+	bg_music.stream = load("res://Music/lungs fight.mp3")
+	bg_music.autoplay = true
+	add_child(bg_music)
 	connect_enemies()
 
 func connect_enemies():
