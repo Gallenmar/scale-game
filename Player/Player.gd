@@ -52,8 +52,8 @@ func scale_player(new_scale, new_speed):
 	max_speed = new_speed
 	$AnimatedSprite2D.scale = Vector2(new_scale,new_scale)
 	$InVuln.scale = Vector2(new_scale,new_scale)
-	$CollisionShape2D.scale = Vector2(new_scale,new_scale)
-	$CollisionShape2D.position = Vector2(36*10 * new_scale *1.4,0)
+	$CollisionShape2D.scale = Vector2(new_scale*100,new_scale*100)
+	$CollisionShape2D.position = Vector2(360 * new_scale *1.4,0)
 
 func _physics_process(delta):
 	if Globals.health > 0:
