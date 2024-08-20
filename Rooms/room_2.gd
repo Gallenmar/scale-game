@@ -3,6 +3,7 @@ extends WorldParent
 @export var mob_scene: PackedScene
 @export var killer_scene: PackedScene
 @export var bcell_scene: PackedScene
+@export var white_scene: PackedScene
 @onready var player = $Player
 
 var entered = false
@@ -30,9 +31,10 @@ func _on_entrance_body_exited(body):
 		var killer = killer_scene.instantiate()
 		killer.global_position = $"Spawn Locations/killer".global_position
 		add_child(killer)
-		var killer2 = killer_scene.instantiate()
-		killer2.global_position = $"Spawn Locations/killer2".global_position
-		add_child(killer2)
+		
+		var white = white_scene.instantiate()
+		white.global_position = $"Spawn Locations/white".global_position
+		add_child(white)
 		
 		connect_enemies()
 		entered = true

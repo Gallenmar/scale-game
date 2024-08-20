@@ -7,9 +7,12 @@ extends WorldParent
 
 var entered = false
 
+func _ready():
+	$UI/ColorRect.hide()
+	$UI/Label.hide()
+
 func _on_entrance_body_exited(body):
 	if !entered:
-		$Exit2.is_opened = false
 		var mob = mob_scene.instantiate()
 		mob.global_position = $"Spawn Locations/Marker2D".global_position
 		mob.player = player
@@ -30,17 +33,15 @@ func _on_entrance_body_exited(body):
 		var killer = killer_scene.instantiate()
 		killer.global_position = $"Spawn Locations/killer".global_position
 		add_child(killer)
-		var killer2 = killer_scene.instantiate()
-		killer2.global_position = $"Spawn Locations/killer2".global_position
-		add_child(killer2)
-		
 		connect_enemies()
 		entered = true
 
 func _process(_delta):
 	#get_tree().get_nodes_in_group("Player")
 	if get_tree().get_nodes_in_group("Enemies").size() <=0:
-		$Exit2.is_opened = true
+		$UI/ColorRect.show()
+		$UI/Label.show()
+		get_tree().paused = true
 
 
 

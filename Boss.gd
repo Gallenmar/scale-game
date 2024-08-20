@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#@onready var player = get_node("/root/World/Player")
+@export var player :Node = null
 
 var player_nearby :bool = false
 var can_shoot : bool = true
@@ -53,7 +55,7 @@ func wave_attack():
 		shoot.emit(global_position, dir)  # Emit the bullet in the calculated direction
 	
 
-@onready var player = get_node("/root/World/Player")
+
 
 func laser_attack():
 

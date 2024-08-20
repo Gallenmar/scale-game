@@ -1,14 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://lkunv7n8emet"]
+[gd_scene load_steps=11 format=3 uid="uid://lkunv7n8emet"]
 
 [ext_resource type="TileSet" uid="uid://xlq35w1ru86b" path="res://TileMap/new_tile_set.tres" id="1_0fxdt"]
+[ext_resource type="Script" path="res://Rooms/room_2.gd" id="1_8cve3"]
 [ext_resource type="PackedScene" uid="uid://c6tie7mf8qj34" path="res://Player/player.tscn" id="2_c0xvv"]
+[ext_resource type="PackedScene" uid="uid://hfb7b7r05eia" path="res://Mobs/Mob/mob.tscn" id="2_v6imm"]
+[ext_resource type="PackedScene" uid="uid://djjyi6f8ftjjs" path="res://Mobs/Killer/killer_cell.tscn" id="3_ccv4f"]
 [ext_resource type="PackedScene" uid="uid://elayg8svbarm" path="res://UI/ui.tscn" id="3_grlns"]
 [ext_resource type="PackedScene" uid="uid://b0o30tm706lc3" path="res://Rooms/Features/exit_2.tscn" id="4_qcgm7"]
+[ext_resource type="PackedScene" uid="uid://6ywdi6nyrmng" path="res://Mobs/B_cell/b_cell.tscn" id="4_sults"]
+[ext_resource type="PackedScene" uid="uid://ojrr2k26oixr" path="res://Mobs/White_Cell/white_cell.tscn" id="5_cf4br"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b60fn"]
 radius = 102.02
 
 [node name="Room2" type="Node2D"]
+script = ExtResource("1_8cve3")
+mob_scene = ExtResource("2_v6imm")
+killer_scene = ExtResource("3_ccv4f")
+bcell_scene = ExtResource("4_sults")
+white_scene = ExtResource("5_cf4br")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_0fxdt")
@@ -34,14 +44,27 @@ shape = SubResource("CircleShape2D_b60fn")
 [node name="Spawn Locations" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Spawn Locations"]
-position = Vector2(942, 144)
+position = Vector2(1819, 695)
 
 [node name="Marker2D2" type="Marker2D" parent="Spawn Locations"]
-position = Vector2(531, 11)
+position = Vector2(2120, 867)
 
 [node name="Marker2D3" type="Marker2D" parent="Spawn Locations"]
-position = Vector2(197, 144)
+position = Vector2(1841, 1220)
+
+[node name="bcell" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(1351, 287)
+
+[node name="killer" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(348, 1058)
+
+[node name="white" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(1254, 1640)
 
 [node name="UI" parent="." instance=ExtResource("3_grlns")]
 
 [node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[connection signal="body_exited" from="Entrance" to="." method="_on_entrance_body_exited"]
