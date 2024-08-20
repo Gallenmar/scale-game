@@ -240,23 +240,29 @@ position = Vector2(118, 666)
 [node name="BCell" parent="Enemies" instance=ExtResource("5_2geht")]
 position = Vector2(1590, 992)
 
-[node name="Mob" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(507, 342)
+player = NodePath("../../Player")
 
-[node name="Mob2" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob2" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(1248, 157)
+player = NodePath("../../Player")
 
-[node name="Mob3" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob3" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(970, 164)
+player = NodePath("../../Player")
 
-[node name="Mob4" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob4" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(503, 123)
+player = NodePath("../../Player")
 
-[node name="Mob5" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob5" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(251, 364)
+player = NodePath("../../Player")
 
-[node name="Mob6" parent="Enemies" instance=ExtResource("6_5autu")]
+[node name="Mob6" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("6_5autu")]
 position = Vector2(786, 278)
+player = NodePath("../../Player")
 
 [node name="Boss" parent="Enemies" instance=ExtResource("7_wdnno")]
 position = Vector2(2935, 1670)

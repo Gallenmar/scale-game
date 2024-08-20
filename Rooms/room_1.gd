@@ -1,11 +1,10 @@
-extends Node2D
+extends WorldParent
 
 @export var mob_scene: PackedScene
 @onready var player = $Player
 
-
-
 func _on_entrance_body_exited(body):
+	$Exit2.is_opened = false
 	var mob = mob_scene.instantiate()
 	mob.global_position = $"Spawn Locations/Marker2D".global_position
 	mob.player = player
@@ -18,16 +17,13 @@ func _on_entrance_body_exited(body):
 	mob3.global_position = $"Spawn Locations/Marker2D3".global_position
 	mob3.player = player
 	add_child(mob3)
+	
+	connect_enemies()
 
-
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(delta):
-	pass
-
-
+func _process(_delta):
+	#get_tree().get_nodes_in_group("Player")
+	if get_tree().get_nodes_in_group("Enemies").size() <=0:
+		$Exit2.is_opened = true
 
 
 

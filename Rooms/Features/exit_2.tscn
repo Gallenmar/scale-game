@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0o30tm706lc3"]
+[gd_scene load_steps=5 format=3 uid="uid://b0o30tm706lc3"]
 
 [ext_resource type="Script" path="res://Rooms/Features/exit_2.gd" id="1_70mwg"]
+[ext_resource type="Texture2D" uid="uid://067mjs51kpbg" path="res://Rooms/Features/exit.png" id="2_vu01t"]
+[ext_resource type="Texture2D" uid="uid://c7mmulsj0bbi6" path="res://Rooms/Features/exit open.png" id="3_6qikh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnvsl"]
-radius = 98.0204
+radius = 106.005
 
 [node name="Exit2" type="Area2D"]
 collision_layer = 16
 collision_mask = 129
 script = ExtResource("1_70mwg")
+
+[node name="Closed" type="Sprite2D" parent="."]
+position = Vector2(-2, -3)
+texture = ExtResource("2_vu01t")
+
+[node name="Opened" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_6qikh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -4)

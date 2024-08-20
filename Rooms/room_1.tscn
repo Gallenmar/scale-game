@@ -37,11 +37,8 @@ layer_1/name = "Ground"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()
 
-[node name="Player" parent="." instance=ExtResource("3_37ntu")]
-position = Vector2(536, 659)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
+[node name="Exit2" parent="." instance=ExtResource("5_1b8b0")]
+position = Vector2(-95, -215)
 
 [node name="Entrance" type="Area2D" parent="."]
 collision_layer = 16
@@ -63,7 +60,16 @@ position = Vector2(197, 144)
 
 [node name="UI" parent="." instance=ExtResource("4_vdrnr")]
 
-[node name="Exit2" parent="." instance=ExtResource("5_1b8b0")]
-position = Vector2(-122, -244)
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("3_37ntu")]
+position = Vector2(536, 659)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
 
 [connection signal="body_exited" from="Entrance" to="." method="_on_entrance_body_exited"]
