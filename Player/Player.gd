@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal shoot(shooting_point_pos, directon)
 signal dead()
+signal lash(shooting_point_pos, directon)
 
 @export var max_speed = 1000
 @export var acceleration = 6000
@@ -30,30 +31,30 @@ func _ready():
 func _process(_delta):
 	if Globals.health > 0:
 		if Globals.health > 80:
-			max_speed = max_speed_80
-			$AnimatedSprite2D.scale = Vector2(scale_80,scale_80)
-			$InVuln.scale = Vector2(scale_80,scale_80)
+			scale_player(scale_80, max_speed_80)
 		elif Globals.health > 60:
-			max_speed = max_speed_60
-			$AnimatedSprite2D.scale = Vector2(scale_60,scale_60)
-			$InVuln.scale = Vector2(scale_60,scale_60)
+			scale_player(scale_60, max_speed_60)
 		elif Globals.health > 40:
-			max_speed = max_speed_40
-			$AnimatedSprite2D.scale = Vector2(scale_40,scale_40)
-			$InVuln.scale = Vector2(scale_40,scale_40)
+			scale_player(scale_40, max_speed_40)
 		elif Globals.health > 20:
-			max_speed = max_speed_20
-			$AnimatedSprite2D.scale = Vector2(scale_20,scale_20)
-			$InVuln.scale = Vector2(scale_20,scale_20)
+			scale_player(scale_20, max_speed_20)
 		elif Globals.health > 0:
-			max_speed = max_speed_0
-			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
-			$InVuln.scale = Vector2(scale_0,scale_0)
+			scale_player(scale_0, max_speed_0)
 		look_at(get_global_mouse_position())
+	else:
+		handle_death()
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
+
+func scale_player(new_scale, new_speed):
+	max_speed = new_speed
+	$AnimatedSprite2D.scale = Vector2(new_scale,new_scale)
+	$InVuln.scale = Vector2(new_scale,new_scale)
+	$CollisionShape2D.scale = Vector2(new_scale,new_scale)
+	$CollisionShape2D.position = Vector2(36*10 * new_scale *1.4,0)
+	print($CollisionShape2D.position)
 
 func _physics_process(delta):
 	if Globals.health > 0:
@@ -63,6 +64,20 @@ func _physics_process(delta):
 			$ShootingTimer.start()
 			var directon = (get_global_mouse_position() - position).normalized()
 			shoot.emit(%ShootingPoint.global_position, directon)
+		if Input.is_action_just_pressed("lash"):
+			Globals.health -= 10
+			
+			var direction = ($PivotPoint/Lash1.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash1.global_position, direction)
+			direction = ($PivotPoint/Lash2.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash2.global_position, direction)
+			direction = ($PivotPoint/Lash3.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash3.global_position, direction)
+			direction = ($PivotPoint/Lash4.global_position - global_position).normalized()
+			lash.emit($PivotPoint/Lash4.global_position, direction)
+			
+			var new_pos = global_position + (%ShootingPoint.global_position - global_position) * 4
+			dash_start(new_pos)
 
 func _on_timer_timeout():
 	can_shoot = true
@@ -101,23 +116,23 @@ func take_damage():
 	if Globals.is_vulnurable:
 		Globals.health -= 10
 		if Globals.health<=0:
-			dead.emit()
-			$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
-			$InVuln.scale = Vector2(scale_0,scale_0)
-			velocity= Vector2.ZERO
+			handle_death()
 		
 func insta_kill():
 	if Globals.is_vulnurable:
-		Globals.health -= 100
-		dead.emit()
-		$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
-		$InVuln.scale = Vector2(scale_0,scale_0)
-		velocity= Vector2.ZERO
+		handle_death()
 
-func dash_start(pos):
-	dash_pos = pos
+func handle_death():
+	Globals.health -= 100
+	dead.emit()
+	$AnimatedSprite2D.scale = Vector2(scale_0,scale_0)
+	$InVuln.scale = Vector2(scale_0,scale_0)
+	velocity= Vector2.ZERO
+
+func dash_start(target_pos):
+	dash_pos = target_pos
 	$DashTimer.start()
-	var dir = (pos - global_position)
+	var dir = (target_pos - global_position)
 	dash_velocity = dir / $DashTimer.wait_time
 	set_collision_layer_value(1,false)
 

@@ -44,7 +44,8 @@ func take_damage():
 		queue_free()
 
 func jump_away(dir):
-	global_position += dir * 100
+	var tween = get_tree().create_tween()
+	tween.tween_property($".", "global_position", global_position+ dir*200 ,0.2)
 
 
 func _on_area_2d_mouse_entered():

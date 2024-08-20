@@ -1,23 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://6ywdi6nyrmng"]
+[gd_scene load_steps=9 format=3 uid="uid://6ywdi6nyrmng"]
 
 [ext_resource type="Script" path="res://Mobs/B_cell/b_cell.gd" id="1_gyg5x"]
-[ext_resource type="Texture2D" uid="uid://t7b14bjkrubm" path="res://Mobs/B_cell/B_Cell.png" id="2_7g14j"]
+[ext_resource type="Texture2D" uid="uid://c2vbcurl84p13" path="res://Mobs/B_cell/макрофаг.png" id="3_tbx3c"]
 [ext_resource type="Texture2D" uid="uid://u4riwgoebwpl" path="res://Player/PlayerSprite/Green_Bac_1.png" id="3_tj6rs"]
+[ext_resource type="Texture2D" uid="uid://c4uqge22o7ili" path="res://Mobs/B_cell/макрофаг осветлённый.png" id="4_xbhs7"]
+[ext_resource type="Texture2D" uid="uid://c70hcadbdxb28" path="res://Mobs/B_cell/Border.png" id="5_b5c7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wghnn"]
+size = Vector2(300, 300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c63nr"]
+radius = 549.008
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
-radius = 24.0208
+radius = 40.5123
 
 [node name="BCell" type="CharacterBody2D" groups=["Bcells", "Enemies"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_gyg5x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8kbj6")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.848752, 0.291295, 0.146197, 1)
-texture = ExtResource("2_7g14j")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.5
@@ -32,4 +33,34 @@ visible = false
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_tj6rs")
 
+[node name="HoverArea" type="Area2D" parent="."]
+
+[node name="ClickablePart" type="CollisionShape2D" parent="HoverArea"]
+shape = SubResource("RectangleShape2D_wghnn")
+
+[node name="CrushDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDistance"]
+shape = SubResource("CircleShape2D_c63nr")
+
+[node name="Orig" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 1.75)
+texture = ExtResource("3_tbx3c")
+
+[node name="LowHealth" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 1.75)
+texture = ExtResource("4_xbhs7")
+
+[node name="Border" type="Sprite2D" parent="."]
+position = Vector2(-3.5, 1.75)
+texture = ExtResource("5_b5c7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8kbj6")
+
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="input_event" from="HoverArea" to="." method="_on_hover_area_input_event"]
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
+[connection signal="body_entered" from="CrushDistance" to="." method="_on_crush_distance_body_entered"]
+[connection signal="body_exited" from="CrushDistance" to="." method="_on_crush_distance_body_exited"]

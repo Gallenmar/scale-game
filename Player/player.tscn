@@ -24,10 +24,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_m5imv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jq1ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_emqdg")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -46,6 +52,18 @@ shape = SubResource("CircleShape2D_r1h4x")
 unique_name_in_owner = true
 position = Vector2(90, 0)
 
+[node name="Lash1" type="Marker2D" parent="PivotPoint"]
+position = Vector2(-34, -26)
+
+[node name="Lash2" type="Marker2D" parent="PivotPoint"]
+position = Vector2(-44, -13)
+
+[node name="Lash3" type="Marker2D" parent="PivotPoint"]
+position = Vector2(-46, 7)
+
+[node name="Lash4" type="Marker2D" parent="PivotPoint"]
+position = Vector2(-37, 23)
+
 [node name="ShootingTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -56,7 +74,6 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_k5cbl")
-autoplay = "default"
 frame_progress = 0.429147
 
 [node name="InVuln" type="Sprite2D" parent="."]
