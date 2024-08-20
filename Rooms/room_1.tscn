@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl60kedawbhe7"]
+[gd_scene load_steps=11 format=3 uid="uid://bl60kedawbhe7"]
 
 [ext_resource type="Script" path="res://Rooms/room_1.gd" id="1_o5cri"]
 [ext_resource type="TileSet" uid="uid://xlq35w1ru86b" path="res://TileMap/new_tile_set.tres" id="1_r46ff"]
 [ext_resource type="PackedScene" uid="uid://hfb7b7r05eia" path="res://Mobs/Mob/mob.tscn" id="2_hk3rr"]
 [ext_resource type="PackedScene" uid="uid://c6tie7mf8qj34" path="res://Player/player.tscn" id="3_37ntu"]
+[ext_resource type="PackedScene" uid="uid://djjyi6f8ftjjs" path="res://Mobs/Killer/killer_cell.tscn" id="3_uuq5l"]
+[ext_resource type="PackedScene" uid="uid://6ywdi6nyrmng" path="res://Mobs/B_cell/b_cell.tscn" id="4_f7qsq"]
 [ext_resource type="PackedScene" uid="uid://elayg8svbarm" path="res://UI/ui.tscn" id="4_vdrnr"]
 [ext_resource type="PackedScene" uid="uid://b0o30tm706lc3" path="res://Rooms/Features/exit_2.tscn" id="5_1b8b0"]
 
@@ -17,6 +19,8 @@ radius = 102.02
 [node name="Room1" type="Node2D"]
 script = ExtResource("1_o5cri")
 mob_scene = ExtResource("2_hk3rr")
+killer_scene = ExtResource("3_uuq5l")
+bcell_scene = ExtResource("4_f7qsq")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_r46ff")
@@ -57,6 +61,15 @@ position = Vector2(531, 11)
 
 [node name="Marker2D3" type="Marker2D" parent="Spawn Locations"]
 position = Vector2(197, 144)
+
+[node name="bcell" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(1974, 1846)
+
+[node name="killer" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(505, 1244)
+
+[node name="killer2" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(1894, 1059)
 
 [node name="UI" parent="." instance=ExtResource("4_vdrnr")]
 
