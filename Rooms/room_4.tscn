@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmat5c52cyqgg"]
+[gd_scene load_steps=12 format=3 uid="uid://bmat5c52cyqgg"]
 
 [ext_resource type="Script" path="res://Rooms/room_4.gd" id="1_a2rkt"]
+[ext_resource type="PackedScene" uid="uid://hfb7b7r05eia" path="res://Mobs/Mob/mob.tscn" id="2_iuyqo"]
+[ext_resource type="PackedScene" uid="uid://djjyi6f8ftjjs" path="res://Mobs/Killer/killer_cell.tscn" id="3_ersvs"]
+[ext_resource type="PackedScene" uid="uid://6ywdi6nyrmng" path="res://Mobs/B_cell/b_cell.tscn" id="4_y51iy"]
 [ext_resource type="PackedScene" uid="uid://qj1ak7x2pw6u" path="res://Mobs/Boss/boss.tscn" id="5_5c5v2"]
 [ext_resource type="FontFile" uid="uid://c7rx5fact685c" path="res://UI/OptimusPrinceps.ttf" id="5_lrh2i"]
 [ext_resource type="TileSet" uid="uid://xlq35w1ru86b" path="res://TileMap/new_tile_set.tres" id="6_7x3i4"]
@@ -16,6 +19,9 @@ font_color = Color(1, 0.247059, 1, 1)
 
 [node name="Room4" type="Node2D"]
 script = ExtResource("1_a2rkt")
+mob_scene = ExtResource("2_iuyqo")
+killer_scene = ExtResource("3_ersvs")
+bcell_scene = ExtResource("4_y51iy")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("6_7x3i4")
@@ -71,5 +77,22 @@ label_settings = SubResource("LabelSettings_pd54d")
 position = Vector2(1627, 562)
 scale = Vector2(10, 10)
 player = NodePath("../Player")
+
+[node name="Spawn Locations" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(2592, 393)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(1871, -491)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(2403, -323)
+
+[node name="bcell" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(2338, 1549)
+
+[node name="killer" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(941, 1655)
 
 [connection signal="body_exited" from="Entrance" to="." method="_on_entrance_body_exited"]
