@@ -3,7 +3,9 @@ extends CharacterBody2D
 signal dead(pos:Vector2)
 signal crush(pos)
 
-@onready var player = get_node("/root/World/Player")
+#@onready var player = get_node("/root/World/Player")
+@onready var world_plyer = get_node("/root/World/Player")
+@export var player = world_plyer
 @export var speed = 300
 
 var health :int = 30

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0o30tm706lc3"]
+
+[ext_resource type="Script" path="res://Rooms/Features/exit_2.gd" id="1_70mwg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnvsl"]
+radius = 98.0204
+
+[node name="Exit2" type="Area2D"]
+collision_layer = 16
+collision_mask = 129
+script = ExtResource("1_70mwg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -4)
+shape = SubResource("CircleShape2D_wnvsl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

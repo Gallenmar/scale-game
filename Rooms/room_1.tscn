@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl60kedawbhe7"]
+[gd_scene load_steps=9 format=3 uid="uid://bl60kedawbhe7"]
 
+[ext_resource type="Script" path="res://Rooms/room_1.gd" id="1_o5cri"]
 [ext_resource type="TileSet" uid="uid://xlq35w1ru86b" path="res://TileMap/new_tile_set.tres" id="1_r46ff"]
+[ext_resource type="PackedScene" uid="uid://hfb7b7r05eia" path="res://Mobs/Mob/mob.tscn" id="2_hk3rr"]
+[ext_resource type="PackedScene" uid="uid://c6tie7mf8qj34" path="res://Player/player.tscn" id="3_37ntu"]
+[ext_resource type="PackedScene" uid="uid://elayg8svbarm" path="res://UI/ui.tscn" id="4_vdrnr"]
+[ext_resource type="PackedScene" uid="uid://b0o30tm706lc3" path="res://Rooms/Features/exit_2.tscn" id="5_1b8b0"]
+
+[sub_resource type="TileSet" id="TileSet_vnko1"]
+tile_size = Vector2i(120, 120)
+physics_layer_0/collision_layer = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jv5x"]
+radius = 102.02
 
 [node name="Room1" type="Node2D"]
+script = ExtResource("1_o5cri")
+mob_scene = ExtResource("2_hk3rr")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_r46ff")
@@ -12,3 +26,44 @@ layer_0/tile_data = PackedInt32Array(-131074, 65537, 1, -65538, 131073, 7, -2, 4
 layer_1/name = "Ground"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array()
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vnko1")
+rendering_quadrant_size = 17
+format = 2
+layer_0/name = "Wall"
+layer_0/tile_data = PackedInt32Array(-131066, 0, 0, 327684, 131072, 0, 0, 327680, 0, 196616, 327680, 0, 65536, 393216, 0, 131080, 393216, 0, -196603, 2, 0)
+layer_1/name = "Ground"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Player" parent="." instance=ExtResource("3_37ntu")]
+position = Vector2(536, 659)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+
+[node name="Entrance" type="Area2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance"]
+position = Vector2(538, 660)
+shape = SubResource("CircleShape2D_2jv5x")
+
+[node name="Spawn Locations" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(942, 144)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(531, 11)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawn Locations"]
+position = Vector2(197, 144)
+
+[node name="UI" parent="." instance=ExtResource("4_vdrnr")]
+
+[node name="Exit2" parent="." instance=ExtResource("5_1b8b0")]
+position = Vector2(-122, -244)
+
+[connection signal="body_exited" from="Entrance" to="." method="_on_entrance_body_exited"]
