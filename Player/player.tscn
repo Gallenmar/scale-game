@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5i0xglys5x0l" path="res://Player/InVuln.png" id="6_gmfd0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1h4x"]
-radius = 560.066
+radius = 7.86384
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k5cbl"]
 animations = [{
@@ -24,10 +24,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_m5imv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jq1ja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_emqdg")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -37,7 +43,7 @@ script = ExtResource("1_gufou")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, -1)
 rotation = 1.5708
-scale = Vector2(0.07, 0.07)
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_r1h4x")
 
 [node name="PivotPoint" type="Marker2D" parent="."]
@@ -68,7 +74,6 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_k5cbl")
-autoplay = "default"
 frame_progress = 0.429147
 
 [node name="InVuln" type="Sprite2D" parent="."]
