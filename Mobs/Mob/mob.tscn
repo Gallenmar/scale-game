@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://hfb7b7r05eia"]
+[gd_scene load_steps=11 format=3 uid="uid://hfb7b7r05eia"]
 
 [ext_resource type="Script" path="res://Mobs/Mob/mob.gd" id="1_m86af"]
 [ext_resource type="Texture2D" uid="uid://u8yk5rjuxxsm" path="res://Mobs/Mob/маст.png" id="2_ldfr4"]
 [ext_resource type="Texture2D" uid="uid://ceyk8lomost1b" path="res://Mobs/Mob/осветленный маст.png" id="3_k33ex"]
 [ext_resource type="Texture2D" uid="uid://c82glylmmnhs7" path="res://Mobs/Mob/Border.png" id="3_ye7on"]
+[ext_resource type="Texture2D" uid="uid://1xs4ceqqve3o" path="res://Mobs/Mob/Anim-1.png" id="5_agirf"]
+[ext_resource type="Texture2D" uid="uid://c2tq2g8fs8jlm" path="res://Mobs/Mob/Anim-2.png" id="6_xvy3o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1r17"]
 radius = 33.7343
@@ -13,6 +15,20 @@ size = Vector2(300, 300)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ltv7g"]
 radius = 549.008
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p45wl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_agirf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xvy3o")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Mob" type="CharacterBody2D" groups=["Enemies", "Mobs"]]
 collision_layer = 2
@@ -48,6 +64,11 @@ wait_time = 0.5
 [node name="Border" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("3_ye7on")
+
+[node name="Death Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p45wl")
+frame = 1
+frame_progress = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="HoverArea" to="." method="_on_hover_area_input_event"]

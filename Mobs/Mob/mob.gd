@@ -16,6 +16,7 @@ var timer = 1
 func _ready():
 	$LowHealth.hide()
 	$Border.hide()
+	$"Death Animation".hide()
 
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
@@ -43,6 +44,12 @@ func take_damage():
 		
 	if health<=0:
 		dead.emit(global_position)
+		$LowHealth.hide()
+		$Orig.hide()
+		$Border.hide()
+		$"Death Animation".show()
+		$"Death Animation".play()
+		await get_tree().create_timer(0.4).timeout
 		queue_free()
 
 func jump_away(dir):
