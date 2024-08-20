@@ -5,12 +5,12 @@ extends Node2D
 
 func _on_entrance_body_exited(body):
 	var mob = mob_scene.instantiate()
-	for a in $"Spawn Locations".get_child_count():
-		for i in $"Spawn Locations".get_children():
-			mob.global_position = i.global_position
-			mob.player = player
-			add_child(mob)
-			print(i.global_position)
+	
+	for i in $"Spawn Locations".get_children():
+		mob.global_position = i.global_position
+		mob.player = player
+		add_child(mob)
+		print(i.global_position)
 
 
 func _ready():
