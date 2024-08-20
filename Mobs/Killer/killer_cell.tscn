@@ -1,27 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://djjyi6f8ftjjs"]
+[gd_scene load_steps=8 format=3 uid="uid://djjyi6f8ftjjs"]
 
 [ext_resource type="Script" path="res://Mobs/Killer/killer_cell.gd" id="1_f0l7e"]
-[ext_resource type="Texture2D" uid="uid://bx70f6n7oi5ei" path="res://Mobs/Killer/Killer.png" id="2_gjgbl"]
+[ext_resource type="Texture2D" uid="uid://dq6nuq3ycsqu0" path="res://Mobs/Killer/дендро.png" id="2_q5yca"]
+[ext_resource type="Texture2D" uid="uid://be78r4rywrvnc" path="res://Mobs/Killer/осветленный дендро.png" id="3_w21b6"]
+[ext_resource type="Texture2D" uid="uid://b40c4on7gbh5u" path="res://Mobs/Killer/дендро_каемка_Монтажная_область_1.png" id="4_lxhob"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8kbj6"]
-radius = 24.0208
+[sub_resource type="CircleShape2D" id="CircleShape2D_giv8t"]
+radius = 463.297
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f1772"]
-radius = 325.06
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6tfv"]
+size = Vector2(300, 300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qc4x2"]
+radius = 549.008
 
 [node name="KillerCell" type="CharacterBody2D" groups=["Enemies", "Killers"]]
 scale = Vector2(4, 4)
 collision_layer = 2
 script = ExtResource("1_f0l7e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8kbj6")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, -61.25, -10.25, -26.5, -27.75, -52.75, -37, -32.5, -48, -26.75, -57.75, 4, -26, 10.5, -53.75, 27.5, -39, 37, -19, 20.5, -25.25, 49.75, -1.25, 50.75, 3, 31.75, 31.25, 47.25, 41, 37.5, 22.25, 18.75, 53.5, 7.75, 25.5, 3.25, 67.5, -20.75, 68, -37, 27.5, -17.5, 44.75, -44, 27.25, -44.25, 13.75, -28.25, 3.25, -32.5, 3.5, -63)
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-shape = SubResource("CircleShape2D_f1772")
+shape = SubResource("CircleShape2D_giv8t")
 
 [node name="Pivot" type="Marker2D" parent="."]
 
@@ -30,9 +35,35 @@ position = Vector2(32.75, 0)
 
 [node name="ShootCooldown" type="Timer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gjgbl")
+[node name="Orig" type="Sprite2D" parent="."]
+position = Vector2(5, -1)
+texture = ExtResource("2_q5yca")
+
+[node name="LowHealth" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5, -1)
+texture = ExtResource("3_w21b6")
+
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(5, -1)
+texture = ExtResource("4_lxhob")
+
+[node name="HoverArea" type="Area2D" parent="."]
+
+[node name="ClickablePart" type="CollisionShape2D" parent="HoverArea"]
+shape = SubResource("RectangleShape2D_f6tfv")
+
+[node name="CrushDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDistance"]
+shape = SubResource("CircleShape2D_qc4x2")
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="input_event" from="HoverArea" to="." method="_on_hover_area_input_event"]
+[connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
+[connection signal="body_entered" from="CrushDistance" to="." method="_on_crush_distance_body_entered"]
+[connection signal="body_exited" from="CrushDistance" to="." method="_on_crush_distance_body_exited"]
