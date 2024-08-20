@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://hfb7b7r05eia"]
 
 [ext_resource type="Script" path="res://Mobs/Mob/mob.gd" id="1_m86af"]
-[ext_resource type="Texture2D" uid="uid://u8yk5rjuxxsm" path="res://Mobs/Mob/маст.png" id="2_ldfr4"]
-[ext_resource type="Texture2D" uid="uid://ceyk8lomost1b" path="res://Mobs/Mob/осветленный маст.png" id="3_k33ex"]
+[ext_resource type="Texture2D" uid="uid://u8yk5rjuxxsm" path="res://Mobs/Mob/маст.png" id="2_0iv8i"]
+[ext_resource type="Texture2D" uid="uid://ceyk8lomost1b" path="res://Mobs/Mob/осветленный маст.png" id="3_onrr2"]
 [ext_resource type="Texture2D" uid="uid://c82glylmmnhs7" path="res://Mobs/Mob/Border.png" id="3_ye7on"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1r17"]
@@ -36,14 +36,13 @@ shape = SubResource("RectangleShape2D_e3wu8")
 shape = SubResource("CircleShape2D_ltv7g")
 
 [node name="Orig" type="Sprite2D" parent="."]
-texture = ExtResource("2_ldfr4")
+texture = ExtResource("2_0iv8i")
 
 [node name="LowHealth" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_k33ex")
+texture = ExtResource("3_onrr2")
 
 [node name="Low Health Flickering" type="Timer" parent="LowHealth"]
-wait_time = 0.5
 
 [node name="Border" type="Sprite2D" parent="."]
 visible = false
@@ -55,4 +54,3 @@ texture = ExtResource("3_ye7on")
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 [connection signal="body_entered" from="CrushDistance" to="." method="_on_crush_distance_body_entered"]
 [connection signal="body_exited" from="CrushDistance" to="." method="_on_crush_distance_body_exited"]
-[connection signal="timeout" from="LowHealth/Low Health Flickering" to="." method="_on_low_health_flickering_timeout"]
