@@ -3,6 +3,7 @@ extends CharacterBody2D
 var player_nearby :bool = false
 var can_shoot : bool = true
 var health = 40
+var timer = 1
 #crush
 var player_near = true
 var hovered = false
@@ -49,7 +50,7 @@ func take_damage():
 	health -= 10
 	if health <=10:
 		#$Sprite2D.material.set_shader_parameter("progress", 1)
-		$LowHealth.show()
+		$"LowHealth/Low Health Flickering".start()
 	if health<=0:
 		dead.emit(global_position)
 		queue_free()
@@ -82,3 +83,11 @@ func _on_crush_distance_body_exited(body):
 	player_near = false
 
 #end crush
+
+func _on_low_health_flickering_timeout():
+	if timer == 1:
+		$LowHealth.show()
+		timer = 2
+	else:
+		$LowHealth.hide()
+		timer = 1

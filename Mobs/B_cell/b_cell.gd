@@ -3,6 +3,7 @@ extends CharacterBody2D
 var player_nearby :bool = false
 var can_shoot : bool = true
 var health = 40
+var timer = 1
 
 #crush
 var player_near = true
@@ -48,8 +49,7 @@ func _on_shoot_cooldown_timeout():
 func take_damage():
 	health -= 10
 	if health <=10:
-		#$Sprite2D.material.set_shader_parameter("progress", 1)
-		$LowHealth.show()
+		$"LowHealth/Low Heath Flickering".start()
 	if health<=0:
 		dead.emit(global_position)
 		queue_free()
@@ -57,9 +57,6 @@ func take_damage():
 func jump_away(dir):
 	var tween = get_tree().create_tween()
 	tween.tween_property($".", "global_position", global_position+ dir*200 ,0.2)
-
-
-
 
 func _on_hover_area_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("dash") and $Border.visible:
@@ -82,3 +79,12 @@ func _on_crush_distance_body_entered(body):
 
 func _on_crush_distance_body_exited(body):
 	player_near = false
+
+
+func _on_low_heath_flickering_timeout():
+	if timer == 1:
+		$LowHealth.show()
+		timer = 2
+	else:
+		$LowHealth.hide()
+		timer = 1

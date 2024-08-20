@@ -48,10 +48,15 @@ position = Vector2(-3.5, 1.75)
 texture = ExtResource("3_tbx3c")
 
 [node name="LowHealth" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3.5, 1.75)
 texture = ExtResource("4_xbhs7")
 
+[node name="Low Heath Flickering" type="Timer" parent="LowHealth"]
+wait_time = 0.5
+
 [node name="Border" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-3.5, 1.75)
 texture = ExtResource("5_b5c7h")
 
@@ -64,3 +69,4 @@ shape = SubResource("CircleShape2D_8kbj6")
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]
 [connection signal="body_entered" from="CrushDistance" to="." method="_on_crush_distance_body_entered"]
 [connection signal="body_exited" from="CrushDistance" to="." method="_on_crush_distance_body_exited"]
+[connection signal="timeout" from="LowHealth/Low Heath Flickering" to="." method="_on_low_heath_flickering_timeout"]

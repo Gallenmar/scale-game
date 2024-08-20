@@ -44,6 +44,9 @@ visible = false
 position = Vector2(5, -1)
 texture = ExtResource("3_w21b6")
 
+[node name="Low Health Flickering" type="Timer" parent="LowHealth"]
+wait_time = 0.5
+
 [node name="Border" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(5, -1)
@@ -62,6 +65,7 @@ shape = SubResource("CircleShape2D_qc4x2")
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="timeout" from="LowHealth/Low Health Flickering" to="." method="_on_low_health_flickering_timeout"]
 [connection signal="input_event" from="HoverArea" to="." method="_on_hover_area_input_event"]
 [connection signal="mouse_entered" from="HoverArea" to="." method="_on_hover_area_mouse_entered"]
 [connection signal="mouse_exited" from="HoverArea" to="." method="_on_hover_area_mouse_exited"]

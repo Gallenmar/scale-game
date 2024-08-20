@@ -11,6 +11,7 @@ var health :int = 30
 var can_damage = true
 var player_near = true
 var hovered = false
+var timer = 1
 
 func _ready():
 	$LowHealth.hide()
@@ -37,8 +38,8 @@ func _physics_process(_delta):
 func take_damage():
 	health -= 10
 	if health <=10:
+		$"LowHealth/Low Health Flickering".start()
 		#$Sprite2D.material.set_shader_parameter("progress", 1)
-		$LowHealth.show()
 		
 	if health<=0:
 		dead.emit(global_position)
@@ -72,3 +73,11 @@ func _on_hover_area_input_event(viewport, event, shape_idx):
 		crush.emit(global_position)
 		queue_free()
 		dead.emit(global_position)
+
+func _on_low_health_flickering_timeout():
+	if timer == 1:
+		$LowHealth.show()
+		timer = 2
+	else:
+		$LowHealth.hide()
+		timer = 1

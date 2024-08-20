@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://ojrr2k26oixr"]
+[gd_scene load_steps=8 format=3 uid="uid://ojrr2k26oixr"]
 
-[ext_resource type="Texture2D" uid="uid://rn250vsk8bfb" path="res://Mobs/White_Cell/White.png" id="1_puboh"]
 [ext_resource type="Script" path="res://Mobs/White_Cell/white_cell.gd" id="1_sfxua"]
+[ext_resource type="Texture2D" uid="uid://di8q7k8xhdjhb" path="res://Mobs/White_Cell/киллер.png" id="2_d3ykj"]
+[ext_resource type="Texture2D" uid="uid://dmdgcjqx1nsuk" path="res://Mobs/White_Cell/киллер_каемка_Монтажная_область_1.png" id="3_mvn2i"]
+[ext_resource type="Texture2D" uid="uid://57htvo2nbad5" path="res://Mobs/White_Cell/осветленный киллер.png" id="4_fie1h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xiabr"]
 radius = 149.03
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw3xt"]
+size = Vector2(566, 552)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4sht"]
 radius = 976.074
@@ -14,15 +19,37 @@ collision_layer = 2
 script = ExtResource("1_sfxua")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["WhiteCells"]]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_puboh")
+position = Vector2(3.00003, -6.99998)
+scale = Vector2(2.77143, 2.77143)
+texture = ExtResource("2_d3ykj")
+
+[node name="Border" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("3_mvn2i")
+
+[node name="LowHealth" type="Sprite2D" parent="Sprite2D"]
+texture = ExtResource("4_fie1h")
+
+[node name="Low Health Flickering" type="Timer" parent="Sprite2D/LowHealth"]
+wait_time = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xiabr")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hover Area" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hover Area"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_uw3xt")
+
+[node name="CrushDistance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDistance"]
 shape = SubResource("CircleShape2D_m4sht")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Sprite2D/LowHealth/Low Health Flickering" to="." method="_on_low_health_flickering_timeout"]
+[connection signal="input_event" from="Hover Area" to="." method="_on_hover_area_input_event"]
+[connection signal="mouse_entered" from="Hover Area" to="." method="_on_hover_area_mouse_entered"]
+[connection signal="mouse_exited" from="Hover Area" to="." method="_on_hover_area_mouse_exited"]
+[connection signal="body_entered" from="CrushDistance" to="." method="_on_crush_distance_body_entered"]
+[connection signal="body_entered" from="CrushDistance" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CrushDistance" to="." method="_on_crush_distance_body_exited"]
