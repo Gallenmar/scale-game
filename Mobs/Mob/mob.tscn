@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://hfb7b7r05eia"]
+[gd_scene load_steps=7 format=3 uid="uid://hfb7b7r05eia"]
 
 [ext_resource type="Script" path="res://Mobs/Mob/mob.gd" id="1_m86af"]
-[ext_resource type="Texture2D" uid="uid://u8yk5rjuxxsm" path="res://Mobs/Mob/маст.png" id="2_26g7w"]
-[ext_resource type="Texture2D" uid="uid://ceyk8lomost1b" path="res://Mobs/Mob/осветленный маст.png" id="3_xxgwg"]
+[ext_resource type="Texture2D" uid="uid://b1vb6leyds13j" path="res://Mobs/Mob/Mob.png" id="3_wpodm"]
 [ext_resource type="Texture2D" uid="uid://c82glylmmnhs7" path="res://Mobs/Mob/Border.png" id="3_ye7on"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1r17"]
@@ -36,11 +35,12 @@ shape = SubResource("RectangleShape2D_e3wu8")
 shape = SubResource("CircleShape2D_ltv7g")
 
 [node name="Orig" type="Sprite2D" parent="."]
-texture = ExtResource("2_26g7w")
+texture = ExtResource("3_wpodm")
 
 [node name="LowHealth" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("3_xxgwg")
+modulate = Color(0.529885, 0.495337, 0.957984, 1)
+texture = ExtResource("3_wpodm")
 
 [node name="Border" type="Sprite2D" parent="."]
 visible = false
